@@ -15,7 +15,7 @@ export const isUserValid = async (token) => {
         throw new Error('Token is invalid');
       }
     } catch (err) {
-      throw err;
+      console.log(err);
     }
   };
   

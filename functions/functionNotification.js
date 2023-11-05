@@ -4,17 +4,12 @@ import { notification } from "../models/notificationModel.js"
 import { User } from "../models/userModel.js"
 
 
-export async function getAllNotification(req,res){
-
-}
-
 
 export async function postNewNotification(req,res){
 
 try {
     const token=req.headers.authorization
     const validuser= await isUserValid(token)
-  console.log(validuser)
     if(validuser){
         const {content,chatId}=req.body
         var newNotification={
