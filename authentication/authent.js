@@ -3,17 +3,7 @@ import { User } from "../models/userModel.js"
 import { ObjectId } from "mongodb"
 
 
-// export const isUserValid = async (token) => {
-//   return  jwt.verify(token, process.env.secretKey,async (err, decodedToken) => {
-//         if (decodedToken) {
-//             return await User.findOne({ _id: new ObjectId(decodedToken.id) })
-//         } else {
-//             return err
-//         }
-//     })
 
-
-// }
 
 export const isUserValid = async (token) => {
     try {

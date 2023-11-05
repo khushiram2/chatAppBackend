@@ -28,7 +28,7 @@ const server = app.listen(4000, () => console.log("app started on port 4000"))
 const io = new Server(server, {
     pingTimeout: 600000,
     cors: {
-        origin: "http://localhost:3000"
+        origin: "*"
     }
 })
 
