@@ -56,7 +56,7 @@ io.on("connection", (socket) => {
         const parsedmessage=JSON.parse(newMessage)
         const chat=parsedmessage.chat
         if(!chat.users) return console.log("users not defined");   
-        // const userPresentInRoom=chat.users.find((user)=>user._id===parsedmessage.)    
+    
           socket.in(chat._id).emit("message-recieved",parsedmessage)    
         
     })
