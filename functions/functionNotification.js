@@ -32,7 +32,6 @@ try {
             select:"name picture email"
         })
 
-           console.log(notification1)
   res.status(200).send(notification1)
           
 

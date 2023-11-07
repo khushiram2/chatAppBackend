@@ -54,20 +54,25 @@ io.on("connection", (socket) => {
 
     socket.on("send-message",(newMessage)=>{
         const parsedmessage=JSON.parse(newMessage)
-        var chat=parsedmessage.chat
-        if(!chat.users) return console.log("users not defined");
-        chat.users.forEach(element => {
+        const chat=parsedmessage.chat
+        if(!chat.users) return console.log("users not defined");   
+        // const userPresentInRoom=chat.users.find((user)=>user._id===parsedmessage.)    
+          socket.in(chat._id).emit("message-recieved",parsedmessage)    
         
-        if(element._id===parsedmessage.sender._id) return;
-       
-       
-        socket.in(element._id).emit("message recieved",parsedmessage)            
-        });
-
     })
-    socket.off("user-disconnected",(room)=>{
-        console.log("user disconnected")
+
+    socket.on("user-disconnected",(room)=>{
+        console.log("user disconnected from" + room)
         socket.leave(room)
     })
 
+
+    socket.on('logout', () => {
+        console.log('User logged out');
+        socket.disconnect();
+      });
+    
 })
+io.on('error', (error) => {
+    console.error('Socket.IO Error:', error);
+});
